@@ -1,10 +1,15 @@
 import 'bootswatch/dist/cyborg/bootstrap.min.css'
 import './App.css';
-import { Login } from './components';
+import {Navbar, Footer, Detail, DetailBelow} from './components';
 
 const App = () => {
   return (
-    <Login/>
+    <>
+    <Navbar/>
+    <Detail/>
+    <DetailBelow/>
+    <Footer/>
+    </>
   );
 }
 
