@@ -5,5 +5,6 @@ export {LoginPage} from './LoginPage';
 export {MoviesPage} from './MoviesPage';
 export {SeriesPage} from './SeriesPage'
 export {SignUpPage} from './SignUpPage';
+export {UsersPage} from './UsersPage'
 
 

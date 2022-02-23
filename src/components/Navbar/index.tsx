@@ -1,4 +1,5 @@
 import './index.css'
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
     return (
@@ -14,22 +15,22 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse ms-5" id="navbarColor02">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <button type="button" className="btn btn-outline-info rounded-pill m-1">Home</button>
+                            <Link to="/"><button type="button" className="btn btn-outline-info rounded-pill m-1">Home</button></Link>
                             </li>
                             <li className="nav-item">
-                                <button type="button" className="btn btn-outline-info rounded-pill m-1">Películas</button>
+                            <Link to="/peliculas"><button type="button" className="btn btn-outline-info rounded-pill m-1">Películas</button></Link>
                             </li>
                             <li className="nav-item">
-                                <button type="button" className="btn btn-outline-info rounded-pill m-1">Series</button>
+                            <Link to="/series"><button type="button" className="btn btn-outline-info rounded-pill m-1">Series</button></Link>
                             </li>
                             <li className="nav-item">
-                                <button type="button" className="btn btn-outline-info rounded-pill m-1">Users</button>
+                            <Link to="/users"><button type="button" className="btn btn-outline-info rounded-pill m-1">Users</button></Link>
                             </li>
                             <li className="nav-item">
-                                <button type="button" className="btn btn-outline-info rounded-pill m-1">Admin</button>
+                            <Link to="/admin"><button type="button" className="btn btn-outline-info rounded-pill m-1">Admin</button></Link>
                             </li>
                             <li className="nav-item">
-                                <button type="button" className="btn btn-outline-info rounded-pill m-1">Salir</button>
+                            <Link to="/login"><button type="button" className="btn btn-outline-info rounded-pill m-1">Salir</button></Link>
                             </li>
                         </ul>
                     </div>
