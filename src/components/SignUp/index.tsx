@@ -1,4 +1,23 @@
-const SignUp = () => {
+import { FC, FormEvent, useState } from "react"
+import { Link, useHistory } from "react-router-dom";
+import { signup } from "./api";
+
+const defaultValues = {
+    name: "",
+    birthdate: "",
+    email: "",
+    password: "",
+    role: "user",
+};
+
+const SignUp: FC = () => {
+    const [inputs, setInputs] = useState(defaultValues);
+    let history = useHistory();
+    const handleSubmit = (e: FormEvent<HTMLElement>) => {
+        e.preventDefault();
+        signup(inputs)
+        history.push("/login")
+    }
     return (
         <>
             <div>
@@ -13,31 +32,31 @@ const SignUp = () => {
                         <h2>
                             ~ Películas De Otro Planeta  ~
                         </h2>
-                        <button type="button" className="btn btn-info">Volver</button>
+                        <Link to="/login"><button type="button" className="btn btn-info">Volver</button></Link>
                     </div>
                     <div className="installation-instructions">
                         <code>
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <legend>Creá tu cuenta aqui:</legend>
                                 <div className="form-group">
-                                    <label htmlFor="inputName" className="form-label mt-4">Nombre:</label>
-                                    <input required type="text" className="form-control" id="inputName" aria-describedby="nameHelp" />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="inputSurName" className="form-label mt-4">Apellido:</label>
-                                    <input required type="text" className="form-control" id="inputSurName" aria-describedby="surnameHelp" />
+                                    <label htmlFor="inputName" className="form-label mt-4">Nombre Completo:</label>
+                                    <input required type="text" className="form-control" id="inputName" aria-describedby="nameHelp" value={inputs.name}
+                                        onChange={(e) => setInputs({ ...inputs, name: e.target.value })} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="inputDate" className="form-label mt-4">Fecha de Nacimiento:</label>
-                                    <input required type="date" className="form-control" id="inputDate" aria-describedby="dateHelp" />
+                                    <input required type="date" className="form-control" id="inputDate" aria-describedby="dateHelp" value={inputs.birthdate}
+                                        onChange={(e) => setInputs({ ...inputs, birthdate: e.target.value })} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="InputEmail1" className="form-label mt-4">E-mail:</label>
-                                    <input required type="email" className="form-control" id="InputEmail1" aria-describedby="emailHelp" />
+                                    <input required type="email" className="form-control" id="InputEmail1" aria-describedby="emailHelp" value={inputs.email}
+                                        onChange={(e) => setInputs({ ...inputs, email: e.target.value })} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="InputPassword1" className="form-label mt-4">Contraseña:</label>
-                                    <input required type="password" className="form-control" id="InputPassword1" />
+                                    <input required type="password" className="form-control" id="InputPassword1"  value={inputs.password}
+                                onChange={(e) => setInputs({ ...inputs, password: e.target.value })}/>
                                 </div>
                                 <button type="submit" className="btn btn-info mt-5">Crear</button>
                             </form>
