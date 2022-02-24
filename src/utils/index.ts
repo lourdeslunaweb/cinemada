@@ -1,0 +1,1 @@
+export {apiFirebase, apiMovie} from './axios'
