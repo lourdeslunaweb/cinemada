@@ -7,8 +7,9 @@ const Users: FC = () => {
     const [users, setUsers] = useState<User[]>()
     const asyncGetUsers = async () => {
         const response = await getUsers()
-        console.log(response)
-        setUsers(response)
+        const filteredUsers = response.filter(user => user.role === 'user')
+        console.log(filteredUsers)
+        setUsers(filteredUsers)
     }
     if (!users) {
         asyncGetUsers();
@@ -21,9 +22,9 @@ const Users: FC = () => {
     return (
         <>
             <div className="d-flex flex-wrap justify-content-center">
-                {users?.map(user => {
+                {users?.map((user, index) => {
                     return (
-                        <div className="card border-info m-3" style={{ maxWidth: '20rem' }}>
+                        <div key={index} className="card border-info m-3" style={{ maxWidth: '20rem' }}>
                             <div className="card-header"><h5>{user.name}</h5></div>
                             <div className="card-body">
                                 <p className="card-text">Email: <span>{user.email}</span></p>
@@ -35,7 +36,9 @@ const Users: FC = () => {
                             </svg></button>
                         </div>
                     )
-                })}
+                })} : {
+                    <h2>No hay usuarios registrados</h2>
+                }
             </div>
         </>
     )
