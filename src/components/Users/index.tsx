@@ -2,6 +2,7 @@ import { FC, useState } from "react"
 import { User } from "../../types"
 import { getUsers } from "./api"
 import moment from 'moment'
+import { NoUser } from ".."
 
 const Users: FC = () => {
     const [users, setUsers] = useState<User[]>()
@@ -36,8 +37,8 @@ const Users: FC = () => {
                             </svg></button>
                         </div>
                     )
-                })} : {
-                    <h2>No hay usuarios registrados</h2>
+                })}{
+                    <NoUser/>
                 }
             </div>
         </>
