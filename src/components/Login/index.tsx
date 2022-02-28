@@ -1,6 +1,7 @@
 import { FC, FormEvent, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { login } from './api'
+import swal from 'sweetalert'
 import './index.css'
 
 const defaultValues = {
@@ -18,6 +19,11 @@ const Login: FC = () => {
             localStorage.setItem('user', JSON.stringify(response));
             history.push("/")
         } catch(e) {
+            swal({
+                title: "An error occurred",
+                text: "Please, try again later",
+                icon: "error",
+            })
             console.log(e)
         }
     }
