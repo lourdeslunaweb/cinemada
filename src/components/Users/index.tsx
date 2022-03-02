@@ -1,4 +1,4 @@
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { User } from "../../types"
 import { getUsers } from "./api"
 import moment from 'moment'
@@ -7,21 +7,25 @@ import { Loading, NoUser} from ".."
 const Users: FC = () => {
     const [users, setUsers] = useState<User[]>()
     const [isLoading, setIsLoading] = useState(true)
-    const asyncGetUsers = async () => {
-        const response = await getUsers()
-        const filteredUsers = response.filter(user => user.role === 'user')
-        console.log(filteredUsers)
-        setUsers(filteredUsers)
-        setIsLoading(false)
-    }
-    if (!users) {
-        asyncGetUsers();
-    }
-    // useEffect(() => {
-    //     getUsers().then((response) => {
-    //         setUsers(response);
-    //     });
-    // }, []);
+    // const asyncGetUsers = async () => {
+    //     const response = await getUsers()
+    //     const filteredUsers = response.filter(user => user.role === 'user')
+    //     console.log(filteredUsers)
+    //     setUsers(filteredUsers)
+    //     setIsLoading(false)
+    // }
+    // if (!users) {
+    //     asyncGetUsers();
+    // }
+    useEffect(() => {
+        getUsers().then((response) => {
+            setUsers(response);
+            const filteredUsers = response.filter(user => user.role === 'user')
+            console.log(filteredUsers)
+            setUsers(filteredUsers)
+            setIsLoading(false)
+        });
+    }, []);
     return (
         <>
             <div className="d-flex flex-wrap justify-content-center">
