@@ -1,2 +1,2 @@
 # 📽️ CinemADA
-Librerias: axios, sweet alert, moment
+Librerias: axios, sweet alert, moment, react spinner

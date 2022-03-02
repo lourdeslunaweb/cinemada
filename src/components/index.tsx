@@ -1,6 +1,7 @@
 export {Login} from './Login';
 export {SignUp} from './SignUp';
 export {Footer} from './Footer';
+export {Loading} from './Loading';
 export {Users} from './Users';
 export {Cards} from './Cards';
 export {Navbar} from './Navbar';

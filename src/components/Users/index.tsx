@@ -2,15 +2,17 @@ import { FC, useState } from "react"
 import { User } from "../../types"
 import { getUsers } from "./api"
 import moment from 'moment'
-import { NoUser } from ".."
+import { Loading, NoUser} from ".."
 
 const Users: FC = () => {
     const [users, setUsers] = useState<User[]>()
+    const [isLoading, setIsLoading] = useState(true)
     const asyncGetUsers = async () => {
         const response = await getUsers()
         const filteredUsers = response.filter(user => user.role === 'user')
         console.log(filteredUsers)
         setUsers(filteredUsers)
+        setIsLoading(false)
     }
     if (!users) {
         asyncGetUsers();
@@ -23,6 +25,8 @@ const Users: FC = () => {
     return (
         <>
             <div className="d-flex flex-wrap justify-content-center">
+                {isLoading ? <Loading /> : null}
+                {users?.length === 0? <NoUser/> : null}
                 {users?.map((user, index) => {
                     return (
                         <div key={index} className="card border-info m-3" style={{ maxWidth: '20rem' }}>
@@ -37,9 +41,7 @@ const Users: FC = () => {
                             </svg></button>
                         </div>
                     )
-                })}{
-                    <NoUser/>
-                }
+                })}
             </div>
         </>
     )
