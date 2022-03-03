@@ -15,7 +15,7 @@ const Users: FC = () => {
             setUsers(filteredUsers)
             setIsLoading(false)
         });
-    }, []);
+    }, [users]);
     const handleDeleteUser = async (id: string) =>{
         await apiFirebase.delete(`/users/${id}.json`);
     }
