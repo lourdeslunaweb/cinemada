@@ -5,7 +5,10 @@ const apiFirebase = axios.create({
 })
 
 const apiMovie = axios.create({
-    baseURL: 'https://api.themoviedb.org/3/movie/550?api_key=284193af99f8455ac5b6877f9a986cfd',
-})
+    baseURL: "https://api.themoviedb.org/3/",
+    params: {
+        api_key: "284193af99f8455ac5b6877f9a986cfd",
+    },
+});
 
-export {apiFirebase, apiMovie}
+export { apiFirebase, apiMovie }
