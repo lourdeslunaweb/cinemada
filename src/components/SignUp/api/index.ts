@@ -1,7 +1,7 @@
 import { User } from "../../../types";
 import { apiFirebase } from "../../../utils";
 
-type Payload = Omit<User, 'id'>;
+type Payload = Omit<User, 'idDB'>;
 
 const signup = async (data: Payload) => {
     try {
