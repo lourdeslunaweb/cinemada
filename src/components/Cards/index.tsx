@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Item } from "../../types";
+import { apiFirebase } from "../../utils";
 import { Loading } from "../Loading";
 import { addItem, getContentFromApi, getContentFromDB } from "./api";
 
@@ -16,14 +17,20 @@ const Cards = () => {
     useEffect(() => {
         getContentFromDB().then((response) => {
             setItemsArrDB(response)
-            console.log(response)
         });
     }, []);
+    const isItemSelected = (id: number) => {
+        const itemSelected = itemsArrDB?.find(item => item.id === id)
+        if (itemSelected) {
+            return true
+        }
+    }
     const handleAddItemToDB = (item: Item) => {
         addItem(item)
     }
-    const handleDeleteItemFromDB = (item: Item) => {
-        console.log(item)
+    const handleDeleteItemFromDB = async (id : number) => {
+        const itemToDelete = itemsArrDB?.find(item => item.id === id)
+        await apiFirebase.delete(`/items/${itemToDelete?.idDB}.json`);
     }
     return (
         <>
@@ -37,8 +44,11 @@ const Cards = () => {
                                 <img style={{ width: '10rem', height: '14rem' }} src={`http://image.tmdb.org/t/p/w500${item.poster_path}`} className="card-img-top mt-3" alt="afiche" />
                                 <button type="button" className="btn btn-outline-info mt-3">Puntaje: <span>{item.vote_average}</span></button>
                             </div>
-                                <button type="button" className="btn btn-outline-info" onClick={() => handleDeleteItemFromDB(item)}>Eliminar</button>
+                            {isItemSelected(item.id) ?
+                                <button type="button" className="btn btn-outline-info" onClick={() => handleDeleteItemFromDB(item.id)}>Eliminar</button>
+                                :
                                 <button type="button" className="btn btn-info" onClick={() => handleAddItemToDB(item)}>Agregar</button>
+                            }
                         </div>
                     )
                 })}
