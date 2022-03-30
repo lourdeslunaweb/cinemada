@@ -13,7 +13,6 @@ const Users: FC = () => {
             setUsers(response);
             const filteredUsers = response.filter(user => user.role === 'user')
             setUsers(filteredUsers)
-            console.log(filteredUsers)
             setIsLoading(false)
         });
     }, []);
