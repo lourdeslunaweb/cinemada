@@ -2,11 +2,12 @@ import { FC, useEffect, useState } from "react"
 import { User } from "../../types"
 import { getUsers } from "./api"
 import moment from 'moment'
-import { Loading, NoUser} from ".."
+import { Loading, NoUser } from ".."
 import { apiFirebase } from "../../utils/axios"
 
 const Users: FC = () => {
     const [users, setUsers] = useState<User[]>()
+    const [upDateUsers, setUpdateUsers] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
         getUsers().then((response) => {
@@ -15,15 +16,16 @@ const Users: FC = () => {
             setUsers(filteredUsers)
             setIsLoading(false)
         });
-    }, []);
-    const handleDeleteUser = async (id: string) =>{
-        await apiFirebase.delete(`/users/${id}.json`);
+    }, [upDateUsers]);
+    const handleDeleteUser = async (id: string) => {
+        await apiFirebase.delete(`/users/${id}.json`)
+            .then(() => setUpdateUsers(upDateUsers+1) )
     }
     return (
         <>
             <div className="d-flex flex-wrap justify-content-center">
-                {isLoading ? <Loading/> : null}
-                {users?.length === 0? <NoUser/> : null}
+                {isLoading ? <Loading /> : null}
+                {users?.length === 0 ? <NoUser /> : null}
                 {users?.map((user, index) => {
                     return (
                         <div key={index} className="card border-info m-3" style={{ maxWidth: '20rem' }}>
