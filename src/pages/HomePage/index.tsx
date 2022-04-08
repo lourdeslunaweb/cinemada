@@ -1,12 +1,11 @@
-import { Footer, Navbar } from "../../components"
+import { CardsHome } from "../../components"
+import { Layout } from "../../components/layout"
 
 const HomePage = () => {
     return (
-        <>
-            <Navbar/>
-            <h2>HomePage: acá van las peliculas y series elegidas por el admin</h2>
-            <Footer/>
-        </>
+        <Layout>
+            <CardsHome />
+        </Layout>
     )
 }
 

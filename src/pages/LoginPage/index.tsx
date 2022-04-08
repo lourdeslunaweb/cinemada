@@ -1,8 +1,11 @@
 import { Login } from "../../components"
+import { Layout } from "../../components/layout"
 
 const LoginPage = () => {
     return (
-        <Login/>
+        <Layout hideNavbar hideFooter>
+            <Login/>
+        </Layout>
     )
 }
 

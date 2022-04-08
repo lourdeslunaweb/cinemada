@@ -1,8 +1,11 @@
 import { SignUp } from "../../components"
+import { Layout } from "../../components/layout"
 
 const SignUpPage = () => {
     return (
-        <SignUp/>
+        <Layout hideNavbar hideFooter>
+            <SignUp />
+        </Layout>
     )
 }
 

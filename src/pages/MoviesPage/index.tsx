@@ -1,12 +1,11 @@
-import { Footer, Navbar } from "../../components"
+import { CardsMovies } from "../../components"
+import { Layout } from "../../components/layout"
 
 const MoviesPage = () => {
     return (
-        <>
-            <Navbar/>
-            <h2>Películas: acá van las peliculas elegidas por el admin</h2>
-            <Footer/>
-        </>
+        <Layout>
+            <CardsMovies/>
+        </Layout>
     )
 }
 

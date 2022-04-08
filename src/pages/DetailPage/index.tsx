@@ -1,13 +1,12 @@
-import { Detail, DetailBelow, Footer, Navbar } from "../../components"
+import { Detail, DetailBelow} from "../../components"
+import { Layout } from "../../components/layout"
 
 const DetailPage = () => {
     return (
-        <>
-            <Navbar/>
+        <Layout>
             <Detail/>
             <DetailBelow/>
-            <Footer/>
-        </>
+        </Layout>
     )
 }
 

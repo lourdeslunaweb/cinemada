@@ -1,12 +1,11 @@
-import { Cards, Footer, Navbar } from "../../components"
+import { CardsAdmin } from "../../components"
+import { Layout } from "../../components/layout"
 
 const AdminPage = () => {
     return (
-        <>
-            <Navbar/>
-            <Cards/>
-            <Footer/>
-        </>
+        <Layout>
+            <CardsAdmin />
+        </Layout>
     )
 }
 
