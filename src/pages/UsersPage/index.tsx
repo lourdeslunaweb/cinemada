@@ -1,12 +1,11 @@
-import { Footer, Navbar, Users } from "../../components"
+import { Users } from "../../components"
+import { Layout } from "../../components/layout"
 
 const UsersPage = () => {
     return (
-        <>
-            <Navbar/>
-            <Users/>
-            <Footer/>
-        </>
+        <Layout>
+            <Users />
+        </Layout>
     )
 }
 

@@ -4,7 +4,7 @@ import { apiFirebase } from "../../utils";
 import { Loading} from "../Loading";
 import { addItem, getContentFromApi, getContentFromDB } from "./api";
 
-const Cards = () => {
+const CardsAdmin = () => {
     const [itemsArrApi, setItemsArrApi] = useState<Item[]>()
     const [itemsArrDB, setItemsArrDB] = useState<Item[]>()
     const [upDateItems, setUpdateItems] = useState(0)
@@ -59,4 +59,4 @@ const Cards = () => {
     )
 }
 
-export { Cards }
+export { CardsAdmin }

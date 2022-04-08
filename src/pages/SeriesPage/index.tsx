@@ -1,12 +1,11 @@
-import { Footer, Navbar } from "../../components"
+import { CardsSeries } from "../../components"
+import { Layout } from "../../components/layout"
 
 const SeriesPage = () => {
     return (
-        <>
-            <Navbar/>
-            <h2>Series: acá van las series elegidas por el admin</h2>
-            <Footer/>
-        </>
+        <Layout>
+            <CardsSeries/>
+        </Layout>
     )
 }
 
