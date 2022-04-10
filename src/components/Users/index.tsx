@@ -1,25 +1,15 @@
-import { FC, useEffect, useState } from "react"
-import { User } from "../../types"
-import { getUsers } from "./api"
+import { FC, useEffect} from "react"
+import {useUsers} from "../../hooks/useUsers"
 import moment from 'moment'
 import { Loading, NoUser } from ".."
-import { apiFirebase } from "../../utils/axios"
 
 const Users: FC = () => {
-    const [users, setUsers] = useState<User[]>()
-    const [upDateUsers, setUpdateUsers] = useState(0)
-    const [isLoading, setIsLoading] = useState(true)
+    const {upDateUsers,deleteUser , users, isLoading} = useUsers()
     useEffect(() => {
-        getUsers().then((response) => {
-            setUsers(response);
-            const filteredUsers = response.filter(user => user.role === 'user')
-            setUsers(filteredUsers)
-            setIsLoading(false)
-        });
-    }, [upDateUsers]);
-    const handleDeleteUser = async (id: string) => {
-        await apiFirebase.delete(`/users/${id}.json`)
-            .then(() => setUpdateUsers(upDateUsers+1) )
+        upDateUsers()
+    }, []);
+    const handleDeleteUser = (id: string) =>{
+        deleteUser(id)
     }
     return (
         <>

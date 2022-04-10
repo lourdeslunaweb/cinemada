@@ -1,22 +1,12 @@
-import { FC, FormEvent, useState } from "react"
-import { Link, useHistory } from "react-router-dom";
-import { signup } from "./api";
-
-const defaultValues = {
-    name: "",
-    birthdate: "",
-    email: "",
-    password: "",
-    role: "user",
-};
+import { FC, FormEvent} from "react"
+import { Link } from "react-router-dom";
+import { useUsers } from "../../hooks";
 
 const SignUp: FC = () => {
-    const [inputs, setInputs] = useState(defaultValues);
-    let history = useHistory();
+    const {addUser, inputs, setInputs } = useUsers()
     const handleSubmit = (e: FormEvent<HTMLElement>) => {
         e.preventDefault();
-        signup(inputs)
-        history.push("/login")
+        addUser(inputs)
     }
     return (
         <>
