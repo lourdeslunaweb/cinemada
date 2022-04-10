@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FC, useEffect} from "react"
 import {useUsers} from "../../hooks/useUsers"
 import moment from 'moment'

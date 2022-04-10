@@ -1,25 +1,18 @@
-import { useEffect, useState } from "react"
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react"
+import { useItemsApi, useItemsDB } from "../../hooks";
 import { Item } from "../../types";
-import { apiFirebase } from "../../utils";
 import { Loading} from "../Loading";
-import { addItem, getContentFromApi, getContentFromDB } from "./api";
 
 const CardsAdmin = () => {
-    const [itemsArrApi, setItemsArrApi] = useState<Item[]>()
-    const [itemsArrDB, setItemsArrDB] = useState<Item[]>()
-    const [upDateItems, setUpdateItems] = useState(0)
-    const [isLoading, setIsLoading] = useState(true)
+    const {upDateItemsApi, isLoading, itemsArrApi} = useItemsApi();
+    const {upDateItemsDB, addItemToDB, deleteItemFromDB, itemsArrDB} = useItemsDB();
     useEffect(() => {
-        getContentFromApi().then((response) => {
-            setItemsArrApi(response)
-            setIsLoading(false)
-        });
+        upDateItemsApi();
     }, []);
     useEffect(() => {
-        getContentFromDB().then((response) => {
-            setItemsArrDB(response)
-        });
-    }, [upDateItems]);
+        upDateItemsDB()
+    }, []);
     const isItemSelected = (id: number) => {
         const itemSelected = itemsArrDB?.find(item => item.id === id)
         if (itemSelected) {
@@ -27,12 +20,10 @@ const CardsAdmin = () => {
         }
     }
     const handleAddItemToDB = (item: Item) => {
-        addItem(item).then(() => setUpdateItems(upDateItems+1))
+        addItemToDB(item)
     }
-    const handleDeleteItemFromDB = async (id : number) => {
-        const itemToDelete = itemsArrDB?.find(item => item.id === id)
-        await apiFirebase.delete(`/items/${itemToDelete?.idDB}.json`)
-        .then(() => setUpdateItems(upDateItems+1) )
+    const handleDeleteItemFromDB = (id : number) => {
+        deleteItemFromDB(id)
     }
     return (
         <>
