@@ -17,7 +17,7 @@ const useItemsApi = () => {
         setItemsArrApi(response)
         setIsLoading(false)
     }
-    return { getItemsFromApi, upDateItemsApi, isLoading, itemsArrApi};
+    return { getItemsFromApi, upDateItemsApi, isLoading, setIsLoading, itemsArrApi};
 }
 
 export { useItemsApi }

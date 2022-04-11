@@ -9,7 +9,7 @@ export type User = {
 
 export type Item = {
     poster_path?: string;
-    adult?: boolean;
+    adult?: boolean; 
     overview?: string;
     release_date?: string;
     genre_ids?: number[];
@@ -26,4 +26,5 @@ export type Item = {
     media_type: string;
     name?: string;
     first_air_date?: string;
+    checked?: boolean;
 };
