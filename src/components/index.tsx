@@ -11,4 +11,5 @@ export {Navbar} from './layout/Navbar';
 export {NoUser} from './NoUser';
 export {Detail} from './Detail';
 export {DetailBelow} from './DetailBelow';
+export {SearchItems} from './SearchItems';
 
