@@ -1,9 +1,10 @@
-import { CardsAdmin } from "../../components"
+import { CardsAdmin, SearchItems } from "../../components"
 import { Layout } from "../../components/layout"
 
 const AdminPage = () => {
     return (
         <Layout>
+            <SearchItems />
             <CardsAdmin />
         </Layout>
     )
