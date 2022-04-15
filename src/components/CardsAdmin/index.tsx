@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react"
+import { useEffect } from "react";
 import { useItemsApi, useItemsDB } from "../../hooks";
 import { Item } from "../../types";
-import { Loading} from "../Loading";
+import { Loading } from "../Loading";
 
 const CardsAdmin = () => {
-    const {upDateItemsApi, isLoading, itemsArrApi} = useItemsApi();
-    const {upDateItemsDB, addItemToDB, deleteItemFromDB, itemsArrDB} = useItemsDB();
+    const { upDateItemsApi, isLoading, itemsArrApi } = useItemsApi();
+    const { upDateItemsDB, addItemToDB, deleteItemFromDB, itemsArrDB } = useItemsDB();
     useEffect(() => {
         upDateItemsApi();
     }, []);
@@ -22,7 +22,7 @@ const CardsAdmin = () => {
     const handleAddItemToDB = (item: Item) => {
         addItemToDB(item)
     }
-    const handleDeleteItemFromDB = (id : number) => {
+    const handleDeleteItemFromDB = (id: number) => {
         deleteItemFromDB(id)
     }
     return (
