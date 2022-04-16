@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useItemsApi, useItemsDB } from "../../hooks";
 import { Item } from "../../types";
 import { Loading } from "../Loading";
+import { Link } from "react-router-dom";
 
 const CardsHome = () => {
     const { upDateItemsDB, checkItemDB, uncheckItemDB, itemsArrDB } = useItemsDB();
@@ -32,7 +33,9 @@ const CardsHome = () => {
                         <div key={index} className="card border-info m-3" style={{ width: '15rem' }}>
                             <div className="card-header mt-1" style={{ height: '3rem' }}><h6>{item.title}</h6></div>
                             <div className="card-body">
-                                <img style={{ width: '10rem', height: '14rem' }} src={`http://image.tmdb.org/t/p/w500${item.poster_path}`} className="card-img-top mt-3" alt="afiche" />
+                                <Link to={`/detail/${item.id}`}>
+                                    <img style={{ width: '10rem', height: '14rem' }} src={`http://image.tmdb.org/t/p/w500${item.poster_path}`} className="card-img-top mt-3" alt="afiche" />
+                                </Link>
                                 <button type="button" className="btn btn-outline-info mt-3">Puntaje: <span>{item.vote_average}</span></button>
                             </div>
                             {isItemChecked(item) ?
