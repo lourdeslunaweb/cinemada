@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom"
 import { useItemsApi } from "../../hooks";
 import { ItemById } from "../../types";
 import { Loading } from "../Loading";
+import { StarRating } from "../StarRating";
 
 type ParamsType = {
     id: string;
@@ -33,7 +34,7 @@ const Detail = () => {
                     <div className="card-header mt-3 d-flex flex-column justify-content-between" style={{ width: '30rem' }}>
                         <h4>{itemId?.title}</h4>
                         <h6>{itemId?.original_title}</h6>
-                        <p>{itemId?.vote_average}</p>
+                        <div><StarRating rating={itemId?.vote_average}></StarRating></div>
                         <p>{itemId?.overview}</p>
                         <div>
                             <h5>Trailer:</h5>

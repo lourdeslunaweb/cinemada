@@ -13,3 +13,4 @@ export {Detail} from './Detail';
 export {DetailBelow} from './DetailBelow';
 export {SearchItems} from './SearchItems';
 export {Pagination} from './Pagination';
+export {StarRating} from './StarRating';
