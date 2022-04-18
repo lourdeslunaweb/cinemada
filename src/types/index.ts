@@ -53,7 +53,7 @@ type ProductionCountry = {
     name: string;
 }
 
-type SpokenLanguage ={
+type SpokenLanguage = {
     english_name: string;
     iso_639_1: string;
     name: string;
@@ -85,4 +85,14 @@ export type ItemById = {
     video: boolean;
     vote_average: number;
     vote_count: number;
+}
+
+export type ImgById = {
+    aspect_ratio: number;
+    file_path: string;
+    height: number;
+    iso_639_1: string | null;
+    vote_average: number; 
+    vote_count: number;
+    width: number;
 }

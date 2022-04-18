@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Item, ItemById } from "../../types";
+import { ImgById, Item, ItemById } from "../../types";
 import { apiMovie } from "../../utils";
 
 
@@ -20,8 +20,12 @@ const useItemsApi = () => {
     const getItemById = async (id: number | string): Promise<ItemById> => {
         const response = await apiMovie.get(`/movie/${id}`)
         return response.data
-    }
-    return { getItemsFromApi, upDateItemsApi, getItemById, isLoading, setIsLoading, itemsArrApi };
+    };
+    const getImagesById = async (id: number | string) : Promise<ImgById[]>  => {
+        const response = await apiMovie.get(`/movie/${id}/images`)
+        return response.data.backdrops
+    };
+    return { getItemsFromApi, upDateItemsApi, getItemById, getImagesById, isLoading, setIsLoading, itemsArrApi };
 }
 
 export { useItemsApi }
