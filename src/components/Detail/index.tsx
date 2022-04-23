@@ -29,13 +29,21 @@ const Detail = () => {
             </svg></button>
             {isLoading ? <Loading /> :
                 <div className="d-flex justify-content-center">
-                    <div className="d-flex flex-column card border-info m-3">
-                        <img style={{ width: '20rem' }} src={`http://image.tmdb.org/t/p/w500${itemId?.poster_path}`} className="card-img-top" alt="poster" />
-                        <div className="card-header mt-3 d-flex flex-column justify-content-between" style={{ width: '30rem' }}>
+                    <div className="d-flex flex-column justify-content-center align-items-center flex-sm-row-reverse card border-info m-3">
+                        <img style={{ width: '20rem' }} src={`http://image.tmdb.org/t/p/w500${itemId?.poster_path}`} className="card-img-top img-fluid m-3" alt="poster" />
+                        <div className="card-header mt-3 d-flex flex-column justify-content-between text-wrap" style={{ width: '18rem' }}>
                             <h4>{itemId?.title}</h4>
                             <h6>{itemId?.original_title}</h6>
                             <div><StarRating rating={itemId?.vote_average}></StarRating></div>
-                            <p>{itemId?.overview}</p>
+                            <p className="text-wrap mt-3">{itemId?.overview}</p>
+                        </div>
+                    </div>
+                    <div className="d-flex flex-column justify-content-center align-items-center flex-sm-row-reverse card border-info m-3">
+                        <div className="card-header mt-3 d-flex flex-column justify-content-between text-wrap" style={{ width: '18rem' }}>
+                            <h4>{itemId?.title}</h4>
+                            <h6>{itemId?.original_title}</h6>
+                            <div><StarRating rating={itemId?.vote_average}></StarRating></div>
+                            <p className="text-wrap mt-3">{itemId?.overview}</p>
                         </div>
                     </div>
                 </div>}
