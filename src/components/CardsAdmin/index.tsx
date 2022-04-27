@@ -3,15 +3,24 @@ import { useEffect } from "react";
 import { useItemsApi, useItemsDB } from "../../hooks";
 import { Item } from "../../types";
 import { Loading } from "../Loading";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { StarRating } from "../StarRating";
+
+type ParamsType = {
+    page: string | undefined;
+}
 
 const CardsAdmin = () => {
     const { upDateItemsApi, isLoading, itemsArrApi } = useItemsApi();
     const { upDateItemsDB, addItemToDB, deleteItemFromDB, itemsArrDB } = useItemsDB();
+    let params = new URLSearchParams(window.location.search)
+    let { page } = useParams<ParamsType>();
     useEffect(() => {
-        upDateItemsApi();
-    }, []);
+        if (!page) {
+            params.set('page', '1')
+        }
+        upDateItemsApi(Number(page))
+    }, [page]);
     useEffect(() => {
         upDateItemsDB()
     }, []);

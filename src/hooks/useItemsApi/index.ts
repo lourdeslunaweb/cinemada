@@ -8,12 +8,12 @@ const useItemsApi = () => {
     const [itemsArrApi, setItemsArrApi] = useState<Item[]>()
     const [isLoading, setIsLoading] = useState(true)
     // *** Functions ***
-    const getItemsFromApi = async (): Promise<Item[]> => {
-        const response = await apiMovie.get('/movie/top_rated');
+    const getItemsFromApi = async (page: number): Promise<Item[]> => {
+        const response = await apiMovie.get(`/movie/top_rated?page=${page}`);
         return (response.data.results)
     };
-    const upDateItemsApi = async () => {
-        const response = await getItemsFromApi()
+    const upDateItemsApi = async (page : number) => {
+        const response = await getItemsFromApi(page)
         setItemsArrApi(response)
         setIsLoading(false)
     };

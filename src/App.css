@@ -3,3 +3,7 @@
 body {
     font-family: "Inter UI", sans-serif;
 }
+
+.firstPage {
+    display: none
+}

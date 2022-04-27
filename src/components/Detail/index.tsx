@@ -20,6 +20,7 @@ const Detail = () => {
         getItemById(id).then((response => {
             setItemId(response)
             setIsLoading(false)
+            window.scroll(50, 50);
         }))
     }, [id])
     return (
