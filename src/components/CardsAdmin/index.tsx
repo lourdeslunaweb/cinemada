@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useItemsApi, useItemsDB } from "../../hooks";
 import { Item } from "../../types";
 import { Loading } from "../Loading";
@@ -10,15 +10,11 @@ type ParamsType = {
     page: string | undefined;
 }
 
-const CardsAdmin = () => {
+const CardsAdmin : FC = () => {
     const { upDateItemsApi, isLoading, itemsArrApi } = useItemsApi();
     const { upDateItemsDB, addItemToDB, deleteItemFromDB, itemsArrDB } = useItemsDB();
-    let params = new URLSearchParams(window.location.search)
     let { page } = useParams<ParamsType>();
     useEffect(() => {
-        if (!page) {
-            params.set('page', '1')
-        }
         upDateItemsApi(Number(page))
     }, [page]);
     useEffect(() => {
