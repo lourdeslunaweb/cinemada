@@ -11,7 +11,6 @@ const login = async (payload: Payload) => {
     try {
         const response = await apiFirebase.get('/users.json');
         const users: User[] = mapToArray(response.data);
-        console.log(users)
         return users.find((user) => {
             if (user.email === payload.email && user.password === payload.password) {
                 return user

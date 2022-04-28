@@ -27,7 +27,7 @@ const Navbar = () => {
                             <Link to="/users"><button type="button" className="btn btn-outline-info rounded-pill m-1">Users</button></Link>
                             </li>
                             <li className="nav-item">
-                            <Link to="/admin"><button type="button" className="btn btn-outline-info rounded-pill m-1">Admin</button></Link>
+                            <Link to="/admin/1"><button type="button" className="btn btn-outline-info rounded-pill m-1">Admin</button></Link>
                             </li>
                             <li className="nav-item">
                             <Link to="/login"><button type="button" className="btn btn-outline-info rounded-pill m-1">Salir</button></Link>

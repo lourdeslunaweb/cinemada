@@ -3,6 +3,8 @@ import { useEffect } from "react"
 import { useItemsApi, useItemsDB } from "../../hooks";
 import { Item } from "../../types";
 import { Loading } from "../Loading";
+import { Link } from "react-router-dom";
+import { StarRating } from "../StarRating";
 
 const CardsHome = () => {
     const { upDateItemsDB, checkItemDB, uncheckItemDB, itemsArrDB } = useItemsDB();
@@ -32,8 +34,10 @@ const CardsHome = () => {
                         <div key={index} className="card border-info m-3" style={{ width: '15rem' }}>
                             <div className="card-header mt-1" style={{ height: '3rem' }}><h6>{item.title}</h6></div>
                             <div className="card-body">
-                                <img style={{ width: '10rem', height: '14rem' }} src={`http://image.tmdb.org/t/p/w500${item.poster_path}`} className="card-img-top mt-3" alt="afiche" />
-                                <button type="button" className="btn btn-outline-info mt-3">Puntaje: <span>{item.vote_average}</span></button>
+                                <Link to={`/detail/${item.id}`}>
+                                    <img style={{ width: '10rem', height: '14rem' }} src={`http://image.tmdb.org/t/p/w500${item.poster_path}`} className="card-img-top mt-3" alt="afiche" />
+                                </Link>
+                                <div className="mt-3"><StarRating rating={item.vote_average}></StarRating></div>
                             </div>
                             {isItemChecked(item) ?
                                 <button type="button" className="btn btn-info" onClick={() => handleUncheckItemDB(item.id)}>      <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="currentColor" className="bi bi-eye-slash-fill" viewBox="0 0 16 16">

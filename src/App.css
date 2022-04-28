@@ -3,3 +3,13 @@
 body {
     font-family: "Inter UI", sans-serif;
 }
+
+.firstPage {
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+.lastPage {
+    pointer-events: none;
+    opacity: 0.2;
+}

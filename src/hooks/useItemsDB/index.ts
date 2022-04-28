@@ -14,7 +14,6 @@ const useItemsDB = () => {
 
     const upDateItemsDB = async () => {
         const response = await getItemsFromDB()
-        console.log(response)
         setItemsArrDB(response)
     }
 
