@@ -5,9 +5,7 @@ const AdminPage = () => {
     return (
         <Layout>
             <SearchItems />
-            <Pagination />
             <CardsAdmin />
-            <Pagination />
         </Layout>
     )
 }

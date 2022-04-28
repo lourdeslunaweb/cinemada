@@ -29,6 +29,13 @@ export type Item = {
     checked?: boolean;
 };
 
+export type Results = {
+    page: number,
+    results: Item[],
+    total_pages: number,
+    total_results: number,
+};
+
 type Collection = {
     backdrop_path: string;
     id: number;
@@ -85,14 +92,4 @@ export type ItemById = {
     video: boolean;
     vote_average: number;
     vote_count: number;
-}
-
-export type ImgById = {
-    aspect_ratio: number;
-    file_path: string;
-    height: number;
-    iso_639_1: string | null;
-    vote_average: number; 
-    vote_count: number;
-    width: number;
 }

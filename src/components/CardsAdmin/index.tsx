@@ -1,17 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FC, useEffect } from "react";
+import { Pagination } from "../Pagination";
 import { useItemsApi, useItemsDB } from "../../hooks";
 import { Item } from "../../types";
 import { Loading } from "../Loading";
 import { Link, useParams } from "react-router-dom";
 import { StarRating } from "../StarRating";
 
+
 type ParamsType = {
     page: string | undefined;
 }
 
-const CardsAdmin : FC = () => {
-    const { upDateItemsApi, isLoading, itemsArrApi } = useItemsApi();
+const CardsAdmin: FC = () => {
+    const { upDateItemsApi, isLoading, itemsArrApi, lastPage } = useItemsApi();
     const { upDateItemsDB, addItemToDB, deleteItemFromDB, itemsArrDB } = useItemsDB();
     let { page } = useParams<ParamsType>();
     useEffect(() => {
@@ -34,6 +36,7 @@ const CardsAdmin : FC = () => {
     }
     return (
         <>
+            <Pagination lastPage={lastPage} />
             <div className="d-flex flex-wrap justify-content-center">
                 {isLoading ? <Loading /> : null}
                 {itemsArrApi?.map((item, index) => {
@@ -51,10 +54,10 @@ const CardsAdmin : FC = () => {
                                 <button type="button" className="btn btn-info" onClick={() => handleAddItemToDB(item)}>Agregar</button>
                             }
                         </div>
-
                     )
                 })}
             </div>
+            <Pagination lastPage={lastPage} />
         </>
     )
 }

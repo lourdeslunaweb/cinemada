@@ -5,5 +5,11 @@ body {
 }
 
 .firstPage {
-    display: none
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+.lastPage {
+    pointer-events: none;
+    opacity: 0.2;
 }
