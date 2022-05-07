@@ -1,4 +1,4 @@
-import { CardsAdmin, Pagination, SearchItems } from "../../components"
+import { CardsAdmin, SearchItems } from "../../components"
 import { Layout } from "../../components/layout"
 
 const AdminPage = () => {
